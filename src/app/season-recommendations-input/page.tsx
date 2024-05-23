@@ -79,7 +79,11 @@ const seasonList = [
 ];
 
 const Container = styled("div")`
-  padding: 120px 24px 44px 24px;
+  height: 100%;
+  padding: 40px 24px 44px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 const TextBox = styled("div")`
@@ -92,7 +96,7 @@ const SeasonList = styled("div")`
   display: flex;
   flex-wrap: wrap;
   gap: 22px;
-  margin-top: 95px;
+  margin-top: 75px;
 `;
 
 type SeasonItemProps = {
@@ -108,8 +112,8 @@ const SeasonItem = styled("button")<SeasonItemProps>`
   border-radius: 0;
   appearance: none; // Just in case we missed anything.
 
-  width: 160px;
-  height: 160px;
+  width: calc(50% - 11px);
+  height: 140px;
   flex-shrink: 0;
   border-radius: 28px;
   background-color: ${({ $isSelected }) => ($isSelected ? "#fff" : "#f0e9df")};
@@ -132,7 +136,7 @@ const BigCircle = styled("div")`
   background-color: #e2dacf;
   border-radius: 9999px;
   position: fixed;
-  top: 35%;
+  top: 28%;
   left: 50%;
   transform: translateX(-50%);
   z-index: -1;

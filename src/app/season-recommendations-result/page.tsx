@@ -30,6 +30,10 @@ export default function Page() {
     refetch();
   };
 
+  const handleSaveOrem = () => {
+    // TODO
+  };
+
   return (
     <Container>
       <div>
@@ -71,7 +75,7 @@ export default function Page() {
         <Button color="brown" width={114} onClick={handleAgainRecommend}>
           다시 추천
         </Button>
-        <Button>오름 저장하기</Button>
+        <Button onClick={handleSaveOrem}>오름 저장하기</Button>
         {/* <Button variant="outlined">저장된 오름 보기</Button> */}
       </ButtonBox>
       <BigCircle />
@@ -80,13 +84,17 @@ export default function Page() {
 }
 
 const Container = styled("div")`
-  padding: 120px 24px 44px 24px;
+  height: 100%;
+  padding: 40px 24px 44px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 const TextBox = styled("div")`
   display: flex;
   flex-direction: column;
-  row-gap: 9px;
+  row-gap: 8px;
   margin-bottom: 40px;
 `;
 
@@ -153,7 +161,7 @@ const BigCircle = styled("div")`
   background-color: #e2dacf;
   border-radius: 9999px;
   position: fixed;
-  top: 35%;
+  top: 28%;
   left: 50%;
   transform: translateX(-50%);
   z-index: -1;

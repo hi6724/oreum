@@ -165,6 +165,10 @@ const Container = styled("div")`
   background-color: #90a68d;
   margin-top: -1px;
   padding: 22px 24px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 const TextBox = styled("p")`
