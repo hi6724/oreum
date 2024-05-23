@@ -1,6 +1,8 @@
 "use client";
 import { seasonalOrem } from "@/assets/icon";
+import Button from "@/components/common/Button";
 import Typo from "@/components/common/Typo";
+import { useRouter } from "next/navigation";
 import styled from "styled-components";
 
 const DATA = [
@@ -24,6 +26,7 @@ const DATA = [
 const DATA2 = [];
 
 function OremHistory() {
+  const router = useRouter();
   return (
     <Container>
       <Typo size={30} weight="bold">
@@ -43,6 +46,12 @@ function OremHistory() {
         </Typo>
       )}
       {DATA.length > 0 ? <OremHistoryList /> : <OremNotFound />}
+      <div
+        style={{ position: "fixed", bottom: 44, left: 0, padding: "0 24px", width: "100%" }}
+        onClick={() => router.push("/season-recommendations-input")}
+      >
+        <Button style={{ cursor: "pointer" }}>{DATA.length > 0 ? "오름 더 추천받기" : "첫 오름 추천받기"}</Button>
+      </div>
     </Container>
   );
 }
