@@ -25,7 +25,7 @@ const TypoEl = styled("div")<TypoElProps>`
   font-weight: ${({ $weight }) => {
     return {
       bold: 700,
-      regular: 500,
+      regular: 400,
       "semi-bold": 600,
     }[$weight];
   }};
