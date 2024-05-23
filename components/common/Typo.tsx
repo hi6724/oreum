@@ -8,10 +8,11 @@ interface TypoProps extends HTMLAttributes<HTMLElement> {
   size?: TypoSize;
   weight?: TypoWeight;
   color?: string;
+  tag?: string;
 }
 
-export default function Typo({ size = 16, weight = "regular", color = "black", ...props }: TypoProps) {
-  return <TypoEl $size={size} $weight={weight} $color={color} {...props} />;
+export default function Typo({ size = 16, weight = "regular", color = "black", tag = "div", ...props }: TypoProps) {
+  return <TypoEl $size={size} $weight={weight} $color={color} as={tag} {...props} />;
 }
 
 type TypoElProps = {
