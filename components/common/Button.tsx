@@ -20,6 +20,15 @@ type TagProps = {
   $size: ButtonSize;
 };
 const ButtonTag = styled("button")<TagProps>`
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  text-align: inherit;
+  font: inherit;
+  border-radius: 0;
+  appearance: none; // Just in case we missed anything.
+
   width: 100%;
   height: ${({ $size }) => $size}px;
 
