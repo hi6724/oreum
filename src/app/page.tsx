@@ -62,6 +62,7 @@ export default function Home() {
         />
         <BigCard title="내 오름과 식물 친구 만들기" icon={{ color: "#90A68D", position: "right", hasFace: true }} />
       </CardContainer>
+      <p style={{ color: "#646464", textAlign: "center" }}>제주 자연 절대 지켜!!!!</p>
     </Container>
   );
 }
@@ -82,23 +83,4 @@ const CardContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-`;
-
-const Sun = styled.div`
-  background-color: #e59256;
-  border-radius: 100%;
-  width: 125px;
-  height: 125px;
-  position: absolute;
-  bottom: -24px;
-  right: -24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  p {
-    color: #000;
-    font-size: 36px;
-    font-weight: 700;
-    line-height: 140%;
-  }
 `;
