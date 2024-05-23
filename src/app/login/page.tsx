@@ -9,6 +9,7 @@ import styled, { useTheme } from "styled-components";
 
 export default function Home() {
   const theme = useTheme();
+  const router = useRouter();
   return (
     <Container>
       <Typo
@@ -31,7 +32,7 @@ export default function Home() {
 
       <BottomContainer>
         <KakaoLoginButton />
-        <Button>
+        <Button style={{ cursor: "pointer" }} onClick={() => router.push("/")}>
           <Typo size={16} weight="bold" color={theme.bg}>
             로그인 건너뛰기
           </Typo>
