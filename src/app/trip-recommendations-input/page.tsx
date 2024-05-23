@@ -3,6 +3,7 @@
 import styled from "styled-components";
 import Navbar from "../../../components/common/Navbar";
 import Button from "../../../components/common/Button";
+import Link from "next/link";
 
 export default function Page() {
   return (
@@ -13,7 +14,9 @@ export default function Page() {
         <Desc>그 날 가장 예쁜 오름을 추천해줘요</Desc>
       </TextBox>
       <ButtonBox>
-        <Button>오름 추천 받기</Button>
+        <Link href="/trip-recommendations-result">
+          <Button>오름 추천 받기</Button>
+        </Link>
       </ButtonBox>
     </div>
   );
