@@ -109,7 +109,6 @@ const ImageBox = styled("div")`
 
     a {
       color: #fff;
-      text-decoration: none;
     }
   }
 `;
