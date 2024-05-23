@@ -1,8 +1,8 @@
 "use client";
 
 import styled from "styled-components";
-import Button from "../../../components/common/Button";
-import KakaoScript from "../../../components/KakaoScript";
+import Button from "../../components/common/Button";
+import KakaoScript from "../../components/KakaoScript";
 
 export default function Page() {
   const handleKakaotalkShare = () => {
