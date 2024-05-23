@@ -1,7 +1,16 @@
+"use client";
+
+import styled from "styled-components";
+
 export default function Home() {
   return (
-    <main>
+    <Wrapper>
       <p>hello world</p>
-    </main>
+      <h1>haskdlalsjkjasldkj</h1>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  background-color: ${({ theme }) => theme.green};
+`;
