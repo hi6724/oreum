@@ -1,7 +1,6 @@
 "use client";
 
 import styled from "styled-components";
-import Navbar from "../../../components/common/Navbar";
 import Button from "../../../components/common/Button";
 import Link from "next/link";
 
@@ -11,7 +10,6 @@ export default function Page() {
   return (
     <Container>
       <div>
-        <Navbar />
         <TextBox>
           <Desc>5월 23일엔 이 오름을 추천해요</Desc>
           <Title>물영아리오름</Title>

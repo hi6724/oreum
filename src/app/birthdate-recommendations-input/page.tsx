@@ -1,14 +1,12 @@
 "use client";
 
 import styled from "styled-components";
-import Navbar from "../../../components/common/Navbar";
 import Button from "../../../components/common/Button";
 import Link from "next/link";
 
 export default function Page() {
   return (
     <div>
-      <Navbar />
       <TextBox>
         <Title>생년월일을 알려주세요</Title>
         <Desc>나의 오름과 제주 식물 친구를 만들어줘요</Desc>

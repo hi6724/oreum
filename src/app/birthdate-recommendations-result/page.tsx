@@ -1,7 +1,6 @@
 "use client";
 
 import styled from "styled-components";
-import Navbar from "../../../components/common/Navbar";
 import Button from "../../../components/common/Button";
 import KakaoScript from "../../../components/KakaoScript";
 
@@ -39,7 +38,6 @@ export default function Page() {
     <>
       <KakaoScript />
       <Wrapper>
-        <Navbar />
         <svg width="336" height="89" viewBox="0 0 336 89" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M202.429 34C128.464 34 89.5357 88.5 0 88.5H202.429V34Z" fill="#90A68D" />
           <path d="M202.429 34C276.393 34 315.322 88.5 404.857 88.5H202.429V34Z" fill="#90A68D" />
@@ -106,6 +104,7 @@ export default function Page() {
 const Wrapper = styled("div")`
   width: 100%;
   height: 100%;
+  margin-top: 25px;
 
   display: flex;
   flex-wrap: wrap;
@@ -114,7 +113,7 @@ const Wrapper = styled("div")`
 
 const Container = styled("div")`
   width: 100%;
-  height: 100%;
+  min-height: calc(100% - (89px + 25px));
   background-color: #90a68d;
   margin-top: -1px;
   padding: 22px 24px;
@@ -166,8 +165,6 @@ const PlantBox = styled("div")`
 
     .title {
       color: #414141;
-      font-feature-settings: "case" on;
-      font-family: Pretendard;
       font-size: 16px;
       font-style: normal;
       font-weight: 700;
@@ -178,8 +175,6 @@ const PlantBox = styled("div")`
 
     .desc {
       color: #414141;
-      font-feature-settings: "case" on;
-      font-family: Pretendard;
       font-size: 16px;
       font-style: normal;
       font-weight: 500;
