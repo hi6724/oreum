@@ -1,7 +1,7 @@
 "use client";
 
 import styled from "styled-components";
-import Button from "../../components/common/Button";
+import Button from "@/components/common/Button";
 import Link from "next/link";
 
 export default function Page() {

@@ -1,8 +1,8 @@
 "use client";
 
 import styled from "styled-components";
-import Navbar from "../../components/common/Navbar";
-import Button from "../../components/common/Button";
+import Navbar from "@/components/common/Navbar";
+import Button from "@/components/common/Button";
 
 export default function Page() {
   return (

@@ -1,7 +1,7 @@
 "use client";
 
 import styled from "styled-components";
-import Button from "../../components/common/Button";
+import Button from "@/components/common/Button";
 import Link from "next/link";
 
 const tags = ["신비로운", "아름다운", "운신비로운신비로운"];

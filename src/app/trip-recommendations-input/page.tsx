@@ -1,9 +1,9 @@
 "use client";
 
 import styled from "styled-components";
-import Button from "../../components/common/Button";
+import Button from "@/components/common/Button";
 import Link from "next/link";
-import Typo from "../../components/common/Typo";
+import Typo from "@/components/common/Typo";
 
 export default function Page() {
   return (
