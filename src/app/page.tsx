@@ -81,7 +81,7 @@ const BigCircle = styled.div`
   z-index: -1;
 `;
 
-function KakaoLoginButton() {
+export function KakaoLoginButton() {
   const router = useRouter();
 
   const handleKakaoLogin = () => {
