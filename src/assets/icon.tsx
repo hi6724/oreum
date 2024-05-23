@@ -50,3 +50,77 @@ export const Cloud = ({ ...rest }: any) => {
     </svg>
   );
 };
+
+export const weatherCard = {
+  cloud: (
+    <svg width="163" height="163" viewBox="0 0 163 163" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="163" height="163" rx="28" fill="#DCDCDC" />
+      <mask id="mask0_99_7556" maskUnits="userSpaceOnUse" x="0" y="0" width="163" height="163">
+        <rect width="163" height="163" rx="28" fill="#C7C7C7" />
+      </mask>
+      <g mask="url(#mask0_99_7556)">
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M94.0676 162.261C86.7378 176.366 71.994 186 55 186C30.6995 186 11 166.301 11 142C11 121.196 25.4385 103.764 44.8414 99.1785C49.2279 75.1856 70.2402 57 95.5 57C113.095 57 128.629 65.8236 137.919 79.2873C163.261 81.9909 183 103.44 183 129.5C183 157.39 160.39 180 132.5 180C117.111 180 103.33 173.117 94.0676 162.261Z"
+          fill="white"
+        />
+      </g>
+    </svg>
+  ),
+  snow: (
+    <svg width="163" height="163" viewBox="0 0 163 163" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="163" height="163" rx="28" fill="#DCDCDC" />
+      <mask id="mask0_99_7573" maskUnits="userSpaceOnUse" x="0" y="0" width="163" height="163">
+        <rect width="163" height="163" rx="28" fill="#C7C7C7" />
+      </mask>
+      <g mask="url(#mask0_99_7573)">
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M145.075 80.2301C150.043 73.807 153 65.7488 153 57C153 36.0132 135.987 19 115 19C94.0132 19 77 36.0132 77 57C77 65.7488 79.9566 73.807 84.9251 80.2301C67.6075 90.5108 56 109.4 56 131C56 163.585 82.4152 190 115 190C147.585 190 174 163.585 174 131C174 109.4 162.393 90.5108 145.075 80.2301Z"
+          fill="white"
+        />
+      </g>
+    </svg>
+  ),
+  sunny: (
+    <svg width="163" height="163" viewBox="0 0 163 163" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="163" height="163" rx="28" fill="#DCDCDC" />
+      <mask id="mask0_99_7549" maskUnits="userSpaceOnUse" x="0" y="0" width="163" height="163">
+        <rect width="163" height="163" rx="28" fill="#C7C7C7" />
+      </mask>
+      <g mask="url(#mask0_99_7549)">
+        <circle cx="114" cy="118" r="71" fill="#E7C177" />
+      </g>
+    </svg>
+  ),
+  rain: (
+    <svg width="163" height="163" viewBox="0 0 163 163" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="163" height="163" rx="28" fill="#DCDCDC" />
+      <mask id="mask0_99_7566" maskUnits="userSpaceOnUse" x="0" y="0" width="163" height="163">
+        <rect width="163" height="163" rx="28" fill="#C7C7C7" />
+      </mask>
+      <g mask="url(#mask0_99_7566)">
+        <path
+          d="M166 123.5C166 156.085 139.585 182.5 107 182.5C74.4152 182.5 48 156.085 48 123.5C48 100.652 77.0087 52.5657 94.3447 25.8689C100.379 16.5769 113.621 16.5769 119.655 25.8689C136.991 52.5657 166 100.652 166 123.5Z"
+          fill="#A1CAD7"
+        />
+      </g>
+    </svg>
+  ),
+  fog: (
+    <svg width="163" height="163" viewBox="0 0 163 163" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="163" height="163" rx="28" fill="#DCDCDC" />
+      <mask id="mask0_99_7582" maskUnits="userSpaceOnUse" x="0" y="0" width="163" height="163">
+        <rect width="163" height="163" rx="28" fill="#C7C7C7" />
+      </mask>
+      <g mask="url(#mask0_99_7582)">
+        <rect x="40" y="85" width="164" height="20" rx="10" fill="white" />
+        <rect x="77" y="72" width="164" height="9" rx="4.5" fill="white" />
+        <rect x="22" y="98" width="164" height="30" rx="15" fill="white" />
+        <rect x="56" y="116" width="164" height="30" rx="15" fill="white" />
+      </g>
+    </svg>
+  ),
+};

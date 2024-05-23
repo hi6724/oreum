@@ -40,7 +40,11 @@ export function BigCard({
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path d="M228.429 0C144.964 0 101.036 61.5 0 61.5H228.429V0Z" fill={icon.color} />
+          <path
+            style={{ transform: "translateX(1px)" }}
+            d="M228.429 0C144.964 0 101.036 61.5 0 61.5H228.429V0Z"
+            fill={icon.color}
+          />
           <path d="M228.429 0C311.893 0 355.822 61.5 456.857 61.5H228.429V0Z" fill={icon.color} />
         </OremSvg>
 
@@ -63,6 +67,7 @@ const Container = styled.div`
   grid-column: span 2;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
   h1 {
     color: #000;
     font-size: 24px;

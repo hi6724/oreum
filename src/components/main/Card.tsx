@@ -1,9 +1,13 @@
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
+import Typo from "../common/Typo";
 
 export function Card({ title, icon, onClick, bg }: { title: string; onClick?: () => void; icon: any; bg: string }) {
+  const theme = useTheme();
   return (
-    <Container bg={bg}>
-      <Title>{title}</Title>
+    <Container bg={bg} onClick={onClick} cursor={!!onClick}>
+      <Typo size={20} weight="bold" color={theme.gray07} style={{ padding: "16px 20px", whiteSpace: "break-spaces" }}>
+        {title}
+      </Typo>
       <SvgContainer>
         {icon}
         {onClick ? (
@@ -17,7 +21,7 @@ export function Card({ title, icon, onClick, bg }: { title: string; onClick?: ()
   );
 }
 
-const Container = styled.div<{ bg: string }>`
+const Container = styled.div<{ bg: string; cursor: boolean }>`
   flex: 1;
   aspect-ratio: 1;
   border-radius: 28px;
@@ -27,6 +31,7 @@ const Container = styled.div<{ bg: string }>`
   flex-direction: column;
   justify-content: space-between;
   background-color: ${({ bg }) => bg};
+  cursor: ${({ cursor }) => (cursor ? "pointer" : "default")};
 `;
 const SvgContainer = styled.div`
   position: relative;
@@ -35,14 +40,7 @@ const SvgContainer = styled.div`
   left: 0;
   display: flex;
 `;
-const Title = styled.p`
-  color: #474747;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 130%; /* 19.5px */
-  padding: 16px 20px;
-  white-space: break-spaces;
-`;
+
 const ArrowSvg = styled.svg`
   bottom: 16px;
   right: 24px;

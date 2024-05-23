@@ -1,40 +1,35 @@
 "use client";
 
-import styled from "styled-components";
+import styled, { useTheme } from "styled-components";
 import { Card } from "../components/main/Card";
 import { BigCard } from "../components/main/BigCard";
+import { seasonalOrem, weatherCard } from "@/assets/icon";
+import Typo from "@/components/common/Typo";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const theme = useTheme();
+  const router = useRouter();
+
   return (
     <Container>
-      <h1>
-        무슨 문구를 <br />
-        써줘야 할까요
-      </h1>
-
+      <LogoContainer>
+        {seasonalOrem.spring}
+        {seasonalOrem.summer}
+        {seasonalOrem.autumn}
+        {seasonalOrem.winter}
+      </LogoContainer>
       <CardContainer>
-        <Card
-          title={`오늘 제주 날씨`}
-          bg="#c7c7c7"
-          icon={
-            <div style={{ width: "100%", display: "flex", justifyContent: "end", position: "relative" }}>
-              <h1
-                style={{
-                  position: "absolute",
-                  right: 32,
-                  bottom: "calc(50% - 5px)",
-                  transform: "translateY(50%)",
-                  fontSize: "30px",
-                }}
-              >
-                27C
-              </h1>
-              <svg width="120" height="111" viewBox="0 0 120 111" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="71" cy="71" r="71" fill="#FFDC99" />
-              </svg>
-            </div>
-          }
-        />
+        <SvgContainer>
+          <Typo size={16} weight="semi-bold" color={theme.gray07} style={{ position: "absolute", left: 20, top: 16 }}>
+            오늘 제주 날씨
+          </Typo>
+          {weatherCard.cloud}
+          <Typo size={36} weight="bold" color={theme.gray07} style={{ position: "absolute", right: 20, bottom: 16 }}>
+            27C
+          </Typo>
+        </SvgContainer>
+
         <Card
           title={`내가 다녀온\n오름 보기`}
           icon={
@@ -53,7 +48,7 @@ export default function Home() {
             </div>
           }
           bg="#fff"
-          onClick={() => alert("오름리스트페이지")}
+          onClick={() => router.push("/orem-history")}
         />
         <BigCard
           title="오름 추천 받기"
@@ -62,25 +57,38 @@ export default function Home() {
         />
         <BigCard title="내 오름과 식물 친구 만들기" icon={{ color: "#90A68D", position: "right", hasFace: true }} />
       </CardContainer>
-      <p style={{ color: "#646464", textAlign: "center" }}>제주 자연 절대 지켜!!!!</p>
+      <Typo size={16} weight="regular" color={theme.gray05} style={{ textAlign: "center", marginTop: "36px" }}>
+        소중한 제주의 자연을 지켜요
+      </Typo>
     </Container>
   );
 }
 
+const LogoContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+  > * {
+    margin-left: -5px;
+  }
+`;
+
 const Container = styled.div`
-  padding: 64px 24px;
+  padding: 40px 24px 0 24px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  > h1 {
-    font-size: 36px;
-    line-height: 140%;
-    font-weight: bold;
-    margin-bottom: 16px;
-  }
+  justify-content: space-between;
 `;
 const CardContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
+`;
+const SvgContainer = styled.div`
+  position: relative;
+  > svg {
+    width: 100%;
+    height: 100%;
+  }
 `;

@@ -34,7 +34,7 @@ export default function Home() {
         <KakaoLoginButton />
         <Button style={{ cursor: "pointer" }} onClick={() => router.push("/")}>
           <Typo size={16} weight="bold" color={theme.bg}>
-            로그인 건너뛰기
+            둘러보기
           </Typo>
         </Button>
       </BottomContainer>
@@ -57,7 +57,7 @@ const BottomContainer = styled.div`
   align-items: center;
   width: 100%;
   gap: 16px;
-  padding: 0 44px 24px 44px;
+  padding: 0 24px 44px 24px;
 `;
 
 const Sun = styled.div`
