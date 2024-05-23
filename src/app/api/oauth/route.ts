@@ -18,7 +18,7 @@ const getKakaoToken = async (code: string) => {
     const payload = qs.stringify({
       grant_type: "authorization_code",
       client_id: "4e1c361cdfa5bb3f44be12bc61a3fb1a",
-      redirect_uri: "http://localhost:3000/oauth",
+      redirect_uri: process.env.KAKAO_REDIRECT,
       code: code,
     });
 

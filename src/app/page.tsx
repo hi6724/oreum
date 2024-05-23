@@ -4,10 +4,21 @@ import { Cloud } from "@/assets/icon";
 import KakaoLoginButton from "@/components/KakaoLoginButton";
 import Button from "@/components/common/Button";
 import Typo from "@/components/common/Typo";
+import axios from "axios";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import styled, { useTheme } from "styled-components";
 
 export default function Home() {
+  useEffect(() => {
+    (async () => {
+      const data = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?lat=33.4500452&lon=126.9184399&appid=dfed1ea9045e4a9448554dda6662f76d&units=metric`,
+      );
+      console.log(data);
+    })();
+  }, []);
+
   const theme = useTheme();
   const router = useRouter();
   return (

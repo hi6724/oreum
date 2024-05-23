@@ -4,7 +4,7 @@ import Typo from "./common/Typo";
 export default function KakaoLoginButton() {
   const handleKakaoLogin = () => {
     window.Kakao.Auth.authorize({
-      redirectUri: "http://localhost:3000/oauth",
+      redirectUri: process.env.NEXT_PUBLIC_KAKAO_REDIRECT,
       scope: ["profile_nickname", "account_email"].join(","),
     });
   };
