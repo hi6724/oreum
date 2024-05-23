@@ -1,5 +1,5 @@
 # Build stage
-FROM krmp-d2hub-idock.9rum.cc/goorm/node:20
+FROM krmp-d2hub-idock.9rum.cc/goorm/node:18
 WORKDIR /usr/src/app
 COPY . .
 RUN npm i
