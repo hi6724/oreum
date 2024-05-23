@@ -31,9 +31,13 @@ RUN chown nextjs:nodejs .next
 # https://nextjs.org/docs/advanced-features/output-file-tracing
 # COPY --from=builder /usr/src/app/public ./public
 # COPY --from=builder --chown=nextjs:nodejs /usr/src/app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /usr/src/app/.next/static ./.next/static
-COPY --from=builder --chown=nextjs:nodejs /usr/src/app/package.json package.json
 
+COPY --from=builder /usr/src/app/.next ./.next
+COPY --from=builder /usr/src/app/next.config.mjs ./
+COPY --from=builder /usr/src/app/public ./public
+COPY --from=builder /usr/src/app/src ./src
+COPY --from=builder /usr/src/app/node_modules ./node_modules
+COPY --from=builder /usr/src/app/package.json /usr/src/app/.env ./
 
 USER nextjs
 
