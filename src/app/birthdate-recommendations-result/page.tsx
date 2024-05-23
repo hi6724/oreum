@@ -104,16 +104,16 @@ export default function Page() {
 const Wrapper = styled("div")`
   width: 100%;
   height: 100%;
-  margin-top: 25px;
+  padding-top: 25px;
 
   display: flex;
-  flex-wrap: wrap;
-  justify-content: end;
+  flex-direction: column;
+  align-items: end;
 `;
 
 const Container = styled("div")`
   width: 100%;
-  min-height: calc(100% - (89px + 25px));
+  min-height: calc(100% - 89px);
   background-color: #90a68d;
   margin-top: -1px;
   padding: 22px 24px;
