@@ -11,9 +11,10 @@
   "dependencies": {
     "@tanstack/react-query": "^5.37.1",
     "axios": "^1.7.2",
-    "html-to-image": "^1.11.11",
     "framer-motion": "^11.2.6",
+    "html-to-image": "^1.11.11",
     "next": "14.2.3",
+    "qs": "^6.12.1",
     "react": "^18",
     "react-dom": "^18",
     "react-mobile-picker": "^1.0.0",
@@ -21,6 +22,7 @@
   },
   "devDependencies": {
     "@types/node": "^20",
+    "@types/qs": "^6.9.15",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/styled-components": "^5.1.34",

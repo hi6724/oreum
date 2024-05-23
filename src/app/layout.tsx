@@ -6,6 +6,7 @@ import Head from "next/head";
 import StyledComponentsRegistry from "../components/StyledComponentsRegistry";
 import { ReactQueryClientProvider } from "../components/ReactQueryClientProvider";
 import Transition from "@/components/Transition";
+import KakaoScript from "@/components/KakaoScript";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,6 +33,7 @@ export default function RootLayout({
           />
         </Head>
         <body className={inter.className}>
+          <KakaoScript />
           <Transition>
             <ThemeClient>
               <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
