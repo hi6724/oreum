@@ -5,14 +5,15 @@ export function BigCard({
   title,
   subTitle,
   icon,
-  ...rest
+  onClick,
 }: {
   title: string;
   subTitle?: string;
   icon: { color: string; hasFace?: boolean; position: "left" | "right" };
+  onClick: () => void;
 }) {
   return (
-    <Container>
+    <Container onClick={onClick}>
       <h1>{title}</h1>
       {subTitle && <h2>{subTitle}</h2>}
       <SvgContainer>

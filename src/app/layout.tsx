@@ -5,6 +5,7 @@ import ThemeClient from "../components/ThemeClient";
 import Head from "next/head";
 import StyledComponentsRegistry from "../components/StyledComponentsRegistry";
 import { ReactQueryClientProvider } from "../components/ReactQueryClientProvider";
+import Transition from "@/components/Transition";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,9 +29,11 @@ export default function RootLayout({
           />
         </Head>
         <body className={inter.className}>
-          <ThemeClient>
-            <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
-          </ThemeClient>
+          <Transition>
+            <ThemeClient>
+              <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+            </ThemeClient>
+          </Transition>
         </body>
       </html>
     </ReactQueryClientProvider>
