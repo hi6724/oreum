@@ -1,15 +1,24 @@
 "use client";
 
 import styled from "styled-components";
-import Button from "../../../components/common/Button";
+import Button from "../../components/common/Button";
 import Link from "next/link";
+import Typo from "../../components/common/Typo";
 
 export default function Page() {
   return (
-    <div>
+    <Container>
       <TextBox>
-        <Title>여행 날짜를 알려주세요</Title>
-        <Desc>그 날 가장 예쁜 오름을 추천해줘요</Desc>
+        <Typo weight="bold" size={30}>
+          어느 계절에
+          <br />
+          제주로 가시나요?
+        </Typo>
+        <Typo size={20} color="#646464">
+          선택한 계절에 어울리는
+          <br />
+          오름을 추천해줘요
+        </Typo>
       </TextBox>
       <ButtonBox>
         <Link href="/trip-recommendations-result">
@@ -17,9 +26,13 @@ export default function Page() {
         </Link>
       </ButtonBox>
       <BigCircle />
-    </div>
+    </Container>
   );
 }
+
+const Container = styled("div")`
+  margin-top: 67px;
+`;
 
 const TextBox = styled("div")`
   display: flex;

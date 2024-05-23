@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import ThemeClient from "../../components/ThemeClient";
+import ThemeClient from "../components/ThemeClient";
 import Head from "next/head";
-import StyledComponentsRegistry from "../../components/StyledComponentsRegistry";
-import { ReactQueryClientProvider } from "../../components/ReactQueryClientProvider";
+import StyledComponentsRegistry from "../components/StyledComponentsRegistry";
+import { ReactQueryClientProvider } from "../components/ReactQueryClientProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 

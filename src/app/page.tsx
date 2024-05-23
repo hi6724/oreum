@@ -1,8 +1,8 @@
 "use client";
 
 import styled from "styled-components";
-import { Card } from "../../components/main/Card";
-import { BigCard } from "../../components/main/BigCard";
+import { Card } from "../components/main/Card";
+import { BigCard } from "../components/main/BigCard";
 
 export default function Home() {
   return (
