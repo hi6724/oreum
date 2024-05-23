@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import { BirthdateRecommedResponse, SeasonRecommedResponse } from "./dto";
 
 const http = axios.create({
-  baseURL: "http://172.30.1.28:8080",
+  baseURL: "https://k417ce4df2d7da.user-app.krampoline.com/api",
 });
 
 interface BaseResponse<T> {
