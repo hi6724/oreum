@@ -6,8 +6,8 @@ import { BigCard } from "@/components/main/BigCard";
 import { seasonalOrem, weatherCard } from "@/assets/icon";
 import Typo from "@/components/common/Typo";
 import { useRouter } from "next/navigation";
-import { KakaoLoginButton } from "../page";
 import { useState } from "react";
+import KakaoLoginButton from "@/components/KakaoLoginButton";
 
 export default function Home() {
   const theme = useTheme();
