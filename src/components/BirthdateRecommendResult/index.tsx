@@ -180,6 +180,7 @@ const ResultBox = styled("div")`
 
 const TextBox = styled("div")`
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   row-gap: 9px;
