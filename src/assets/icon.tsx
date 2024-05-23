@@ -124,3 +124,26 @@ export const weatherCard = {
     </svg>
   ),
 };
+
+export const OremPlant = ({ ...rest }) => {
+  return (
+    <svg width="336" height="89" viewBox="0 0 336 89" fill="none" xmlns="http://www.w3.org/2000/svg" {...rest}>
+      <path
+        d="M202.429 34C128.464 34 89.5357 88.5 0 88.5H202.429V34Z"
+        fill="#90A68D"
+        style={{
+          transform: "translateX(1px)",
+        }}
+      />
+      <path d="M202.429 34C276.393 34 315.322 88.5 404.857 88.5H202.429V34Z" fill="#90A68D" />
+      <rect x="199" y="20" width="5" height="16" rx="2.5" fill="#546C51" />
+      <path d="M174.5 48C176.167 50.6667 180.6 54.4 185 48" stroke="#292929" strokeWidth="2" strokeLinecap="round" />
+      <path d="M189 53C190.111 54.5092 193.067 56.6222 196 53" stroke="#292929" strokeWidth="2" strokeLinecap="round" />
+      <path d="M204 48C205.667 50.6667 210.1 54.4 214.5 48" stroke="#292929" strokeWidth="2" strokeLinecap="round" />
+      <circle cx="201.738" cy="12.8333" r="10.2143" fill="#E59256" />
+      <circle cx="202" cy="4.19048" r="4.19048" fill="#E59256" />
+      <circle cx="195.19" cy="4.19048" r="4.19048" fill="#E59256" />
+      <circle cx="208.81" cy="4.19048" r="4.19048" fill="#E59256" />
+    </svg>
+  );
+};

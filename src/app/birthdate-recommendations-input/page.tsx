@@ -31,10 +31,10 @@ export default function Page() {
   return (
     <Container>
       <TextBox>
-        <Typo weight="bold" size={30}>
+        <Typo weight="bold" size={30} color="gray07">
           생일을 알려주세요
         </Typo>
-        <Typo size={20} color="#646464">
+        <Typo size={20} color="gray05">
           나의 오름과 제주 식물 친구를 만들어줘요
         </Typo>
       </TextBox>
