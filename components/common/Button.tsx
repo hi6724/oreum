@@ -1,5 +1,5 @@
 import { HTMLAttributes } from "react";
-import styled, { RuleSet, css } from "styled-components";
+import styled, { css } from "styled-components";
 
 type ButtonVariant = "filled" | "outlined";
 type ButtonColor = "green" | "black";
@@ -20,6 +20,15 @@ type TagProps = {
   $size: ButtonSize;
 };
 const ButtonTag = styled("button")<TagProps>`
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  text-align: inherit;
+  font: inherit;
+  border-radius: 0;
+  appearance: none; // Just in case we missed anything.
+
   width: 100%;
   height: ${({ $size }) => $size}px;
 
@@ -29,6 +38,11 @@ const ButtonTag = styled("button")<TagProps>`
 
   border-radius: 36px;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 14px;
+
   ${({ $color, $variant, theme }) => {
     return {
       green: {
@@ -37,6 +51,8 @@ const ButtonTag = styled("button")<TagProps>`
         `,
         outlined: css`
           border: 1px solid #5d8058;
+          background-color: #fff;
+          color: #5d8058;
         `,
       },
       black: {
@@ -45,6 +61,8 @@ const ButtonTag = styled("button")<TagProps>`
         `,
         outlined: css`
           border: 1px solid ${theme.black};
+          background-color: #fff;
+          color: ${theme.black};
         `,
       },
     }[$color][$variant];
