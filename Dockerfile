@@ -39,6 +39,11 @@ COPY --from=builder /usr/src/app/src ./src
 COPY --from=builder /usr/src/app/node_modules ./node_modules
 COPY --from=builder /usr/src/app/package.json /usr/src/app/.env.development /usr/src/app/.env.production ./
 
+ENV http_proxy=http://krmp-proxy.9rum.cc:3128
+ENV https_proxy=http://krmp-proxy.9rum.cc:3128
+ENV HTTP_PROXY==http://krmp-proxy.9rum.cc:3128
+ENV HTTPS_PROXY==http://krmp-proxy.9rum.cc:3128
+
 USER nextjs
 
 EXPOSE 3000
