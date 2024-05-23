@@ -18,6 +18,7 @@ export default function Page() {
           <Button>오름 추천 받기</Button>
         </Link>
       </ButtonBox>
+      <BigCircle />
     </div>
   );
 }
@@ -46,4 +47,16 @@ const ButtonBox = styled("div")`
   bottom: 24px;
   width: 100%;
   padding: 0 24px;
+`;
+
+const BigCircle = styled("div")`
+  width: 1112px;
+  height: 1112px;
+  background-color: #d5c9ba;
+  border-radius: 9999px;
+  position: fixed;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
 `;
