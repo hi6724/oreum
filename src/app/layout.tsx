@@ -11,8 +11,8 @@ import KakaoScript from "@/components/KakaoScript";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "구름타고오름",
-  description: "구름타고오름",
+  title: "어떵오름",
+  description: "어떵오름",
   icons: {
     icon: "/favicon.png",
   },

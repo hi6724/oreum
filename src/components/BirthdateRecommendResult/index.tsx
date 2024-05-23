@@ -66,39 +66,62 @@ export default function BirthdateRecommendResult() {
 
     if (!box) return;
 
-    toPng(box, { cacheBust: false })
-      .then((dataUrl) => {
-        const file = dataURLtoFile(dataUrl, "orem.png");
-        const formData = new FormData();
-        formData.append("file", file);
-        axios.post(`/api/save-file`, formData, { headers: { "Content-Type": "multipart/form-data" } }).then((res) => {
-          Kakao.Share.sendDefault({
-            objectType: "feed",
-            content: {
-              title: "나의 오름",
-              description: "나의 오름은 무엇일까요?",
-              imageUrl: `${location.origin}/uploads/${res.data.path}`,
-              link: {
-                // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
-                mobileWebUrl: url,
-                webUrl: url,
-              },
-            },
-            buttons: [
-              {
-                title: "나의 오름 만들기",
-                link: {
-                  mobileWebUrl: url,
-                  webUrl: url,
-                },
-              },
-            ],
-          });
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    Kakao.Share.sendDefault({
+      objectType: "feed",
+      content: {
+        title: "어떵오름",
+        description: "내 오름과 식물 친구 만들기",
+        imageUrl: oremResponse?.plantResponse.imageUrl ?? "", // TODO
+        link: {
+          // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
+          mobileWebUrl: url,
+          webUrl: url,
+        },
+      },
+      buttons: [
+        {
+          title: "나도 해보기",
+          link: {
+            mobileWebUrl: url,
+            webUrl: url,
+          },
+        },
+      ],
+    });
+
+    // toPng(box, { cacheBust: false })
+    //   .then((dataUrl) => {
+    //     const file = dataURLtoFile(dataUrl, "orem.png");
+    //     const formData = new FormData();
+    //     formData.append("file", file);
+    //     axios.post(`/api/save-file`, formData, { headers: { "Content-Type": "multipart/form-data" } }).then((res) => {
+    //       Kakao.Share.sendDefault({
+    //         objectType: "feed",
+    //         content: {
+    //           title: "나의 오름",
+    //           description: "나의 오름은 무엇일까요?",
+    //           imageUrl: `${location.origin}/uploads/${res.data.path}`,
+    //           link: {
+    //             // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
+    //             mobileWebUrl: url,
+    //             webUrl: url,
+    //           },
+    //         },
+    //         buttons: [
+    //           {
+    //             title: "나의 오름 만들기",
+    //             link: {
+    //               mobileWebUrl: url,
+    //               webUrl: url,
+    //             },
+    //           },
+    //         ],
+    //       });
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   };
 
   const resultRef = useRef<HTMLDivElement>(null);
