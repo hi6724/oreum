@@ -37,7 +37,7 @@ COPY --from=builder /usr/src/app/next.config.mjs ./
 COPY --from=builder /usr/src/app/public ./public
 COPY --from=builder /usr/src/app/src ./src
 COPY --from=builder /usr/src/app/node_modules ./node_modules
-COPY --from=builder /usr/src/app/package.json /usr/src/app/.env ./
+COPY --from=builder /usr/src/app/package.json /usr/src/app/.env.development /usr/src/app/.env.production ./
 
 USER nextjs
 
