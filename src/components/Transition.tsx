@@ -26,6 +26,10 @@ export default function Transition({ children }: { children: React.ReactNode }) 
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4, ease: [0.27, 0.94, 0.48, 1.0] }}
+          style={{
+            width: "100%",
+            height: "100%",
+          }}
         >
           <FrozenRouter>{children}</FrozenRouter>
         </motion.div>
