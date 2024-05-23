@@ -3,8 +3,43 @@
 import styled from "styled-components";
 import Button from "@/components/common/Button";
 import KakaoScript from "@/components/KakaoScript";
+import { useSearchParams } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
+import { getOremByBirthdate } from "@/api";
+import Typo from "@/components/common/Typo";
 
 export default function Page() {
+  const router = useSearchParams();
+  const month = router.get("month") as string;
+  const day = router.get("day") as string;
+
+  const seasonTextByMonth = (() => {
+    if (!month) return;
+
+    const numMonth = Number(month);
+
+    if (numMonth >= 3 && numMonth <= 5) {
+      return "봄";
+    }
+
+    if (numMonth >= 6 && numMonth <= 8) {
+      return "여름";
+    }
+
+    if (numMonth >= 9 && numMonth <= 11) {
+      return "가을";
+    }
+
+    return "겨울";
+  })();
+
+  const { data: oremResponse } = useQuery({
+    queryKey: ["birthdate", month, day],
+    queryFn: () => getOremByBirthdate(Number(month), Number(day)),
+    enabled: Boolean(month && day),
+    select: (res) => res.data,
+  });
+
   const handleKakaotalkShare = () => {
     const { Kakao } = window;
 
@@ -67,21 +102,34 @@ export default function Page() {
         </svg>
 
         <Container>
-          <DateTypo>9월 9일, 가을</DateTypo>
-          <RecommendTypo>
-            당신은 <span className="white">신비로운 수선화</span>가<br />
-            자라나고 있는
-            <br />
-            <span className="white">새별오름</span>
-            이에요.
-          </RecommendTypo>
+          <TextBox>
+            <Typo size={20} color="#34582E">
+              {month}월 {day}일, {seasonTextByMonth}
+            </Typo>
+            <Typo weight="bold" size={30}>
+              당신은{" "}
+              <Typo color="white" size={30} weight="bold" tag="span">
+                {oremResponse?.adjective} {oremResponse?.plantResponse.plantName}
+              </Typo>
+              가<br />
+              자라나고 있는
+              <br />
+              <Typo color="white" size={30} weight="bold" tag="span">
+                {oremResponse?.oremName}
+              </Typo>
+              이에요.
+            </Typo>
+          </TextBox>
           <PlantBox>
-            <img src="https://www.jeju.go.kr/files/sumok/ecology/0200001416.01-72.jpg" alt="식물 이미지" />
+            <img
+              src={oremResponse?.plantResponse.floweringPeriod}
+              alt={`${oremResponse?.plantResponse.plantName} 이미지`}
+            />
             <div className="text-box">
-              <p className="title">수선화</p>
-              <p className="desc">
-                수선화는 정말 신비로운 꽃 식물이에요. 너무나도 신비로워 신비로워 수선화 최고 완전 최고 냐냐냐냔냐.
-              </p>
+              <Typo weight="bold" size={16}>
+                {oremResponse?.plantResponse.plantName}
+              </Typo>
+              <Typo size={16}>{oremResponse?.plantResponse.desc}</Typo>
             </div>
           </PlantBox>
           <ButtonBox>
@@ -119,31 +167,10 @@ const Container = styled("div")`
   padding: 22px 24px;
 `;
 
-const DateTypo = styled("p")`
-  color: #546c51;
-  font-family: Pretendard;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 130%;
-  letter-spacing: -0.408px;
-`;
-
-const RecommendTypo = styled("p")`
-  color: #000;
-  font-feature-settings: "case" on;
-  font-family: Pretendard;
-  font-size: 30px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 130%;
-  letter-spacing: -0.408px;
-
-  .white {
-    color: #f8f4ee;
-  }
-
-  margin-bottom: 77px;
+const TextBox = styled("p")`
+  display: flex;
+  flex-direction: column;
+  row-gap: 9px;
 `;
 
 const PlantBox = styled("div")`
@@ -152,6 +179,7 @@ const PlantBox = styled("div")`
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  margin-top: 68px;
 
   img {
     width: 100%;
