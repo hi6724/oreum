@@ -12,6 +12,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "구름타고오름",
   description: "구름타고오름",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
