@@ -16,7 +16,7 @@ const seasonIcon: Record<string, JSX.Element> = {
 
 function OremHistory() {
   const router = useRouter();
-  const uuid = localStorage.getItem("uuid") as string;
+  const uuid = typeof window !== "undefined" ? (localStorage.getItem("uuid") as string) : "";
 
   const { data: oremRes } = useQuery({
     queryKey: ["scrap-orem", uuid],
