@@ -11,7 +11,7 @@ export default function KakaoLogin() {
 
   useEffect(() => {
     (async () => {
-      const data = await axios.post(`/api/oauth`, {
+      const data = await axios.post(`/oauth/api`, {
         code,
       });
 
