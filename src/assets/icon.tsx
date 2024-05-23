@@ -37,3 +37,16 @@ export const seasonalOrem = {
     </svg>
   ),
 };
+
+export const Cloud = ({ ...rest }: any) => {
+  return (
+    <svg width="100" height="67" viewBox="0 0 100 67" fill="none" xmlns="http://www.w3.org/2000/svg" {...rest}>
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M76 66.8352C89.4999 65.3429 100 53.8977 100 40C100 25.0883 87.9117 13 73 13C72.5533 13 72.1092 13.0108 71.6679 13.0323C66.7041 5.19962 57.9593 0 48 0C34.9316 0 23.9543 8.9528 20.8668 21.0597C9.20283 21.9149 0 31.8589 0 44C0 56.7025 10.0736 67 22.5 67C22.6671 67 22.8338 66.9981 23 66.9944V67H73H76V66.8352Z"
+        fill="white"
+      />
+    </svg>
+  );
+};
