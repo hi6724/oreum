@@ -99,6 +99,6 @@ const ButtonTag = styled("button")<TagProps>`
   }};
 
   &:disabled {
-    opacity: 0.8;
+    opacity: 0.4;
   }
 `;
