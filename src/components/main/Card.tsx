@@ -12,8 +12,8 @@ export function Card({ title, icon, onClick, bg }: { title: string; onClick?: ()
         {icon}
         {onClick ? (
           <ArrowSvg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
-            <path d="M0.351196 16.0541H31.0541" stroke="white" stroke-width="2" />
-            <path d="M18.9346 3.93448L31.0541 16.054L18.9346 28.1736" stroke="white" stroke-width="2" />
+            <path d="M0.351196 16.0541H31.0541" stroke="white" strokeWidth="2" />
+            <path d="M18.9346 3.93448L31.0541 16.054L18.9346 28.1736" stroke="white" strokeWidth="2" />
           </ArrowSvg>
         ) : null}
       </SvgContainer>
@@ -42,7 +42,7 @@ const SvgContainer = styled.div`
 `;
 
 const ArrowSvg = styled.svg`
-  bottom: 16px;
+  bottom: 32px;
   right: 24px;
   position: absolute;
 `;

@@ -8,6 +8,18 @@ import Typo from "@/components/common/Typo";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import KakaoLoginButton from "@/components/KakaoLoginButton";
+import { useQuery } from "@tanstack/react-query";
+import { getWeather } from "@/api";
+
+const weatherMap: Record<string, string> = {
+  Thunderstorm: "cloud",
+  Drizzle: "rain",
+  Rain: "rain",
+  Snow: "snow",
+  Atmosphere: "cloud",
+  Clear: "sunny",
+  Clouds: "cloud",
+};
 
 export default function Home() {
   const theme = useTheme();
@@ -16,9 +28,20 @@ export default function Home() {
 
   const handleClickHistory = () => {
     // 로그인 되어 있으면
-    // router.push("/orem-history");
-    setIsModalOpen(true);
+    const isLogin = localStorage.getItem("uuid");
+    if (isLogin) {
+      router.push("/orem-history");
+    } else {
+      setIsModalOpen(true);
+    }
   };
+
+  const { data: weatherRes } = useQuery({
+    queryKey: ["weather"],
+    queryFn: () => getWeather(),
+    select: (res) => res.data,
+    staleTime: 1000 * 60 * 30,
+  });
 
   return (
     <>
@@ -31,13 +54,25 @@ export default function Home() {
         </LogoContainer>
         <CardContainer>
           <SvgContainer>
-            <Typo size={16} weight="semi-bold" color={theme.gray07} style={{ position: "absolute", left: 20, top: 16 }}>
+            <Typo
+              size={16}
+              weight="semi-bold"
+              color={theme.gray07}
+              style={{ position: "absolute", left: 20, top: 16, zIndex: 10 }}
+            >
               오늘 제주 날씨
             </Typo>
-            {weatherCard.cloud}
-            <Typo size={36} weight="bold" color={theme.gray07} style={{ position: "absolute", right: 20, bottom: 16 }}>
-              27C
-            </Typo>
+            {!!weatherRes?.weather?.[0].main && weatherCard[weatherMap[weatherRes?.weather?.[0].main]]}
+            {weatherRes && (
+              <Typo
+                size={36}
+                weight="bold"
+                color={theme.gray07}
+                style={{ position: "absolute", right: 20, bottom: 16 }}
+              >
+                {Math.floor(weatherRes?.main?.temp)}°C
+              </Typo>
+            )}
           </SvgContainer>
 
           <Card
@@ -62,14 +97,15 @@ export default function Home() {
           />
           <BigCard
             title="오름 추천 받기"
-            subTitle="여행 날짜에 맞는 오름을 추천드려요"
+            subTitle="여행 계절에 맞는 오름을 추천드려요"
             icon={{ color: "#D5C9BA", position: "left" }}
-            onClick={() => router.push("/birthdate-recommendations-input")}
+            onClick={() => router.push("/season-recommendations-input")}
           />
           <BigCard
             title="내 오름과 식물 친구 만들기"
+            subTitle="생일에 맞는 제주 오름과 식물을 알려드려요"
             icon={{ color: "#90A68D", position: "right", hasFace: true }}
-            onClick={() => router.push("/season-recommendations-input")}
+            onClick={() => router.push("/birthdate-recommendations-input")}
           />
         </CardContainer>
         <Typo size={16} weight="regular" color={theme.gray05} style={{ textAlign: "center", marginTop: "36px" }}>
@@ -153,8 +189,15 @@ const CardContainer = styled.div`
 `;
 const SvgContainer = styled.div`
   position: relative;
-  > svg {
+  border-radius: 28px;
+  overflow: hidden;
+  background-color: ${({ theme }) => theme.gray03};
+
+  svg {
     width: 100%;
     height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
   }
 `;

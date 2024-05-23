@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Typo from "../common/Typo";
 
 export function BigCard({
   title,
@@ -14,8 +15,14 @@ export function BigCard({
 }) {
   return (
     <Container onClick={onClick}>
-      <h1>{title}</h1>
-      {subTitle && <h2>{subTitle}</h2>}
+      <Typo weight="bold" size={20} color="gray07">
+        {title}
+      </Typo>
+      {subTitle && (
+        <Typo size={14} color="gray04">
+          {subTitle}
+        </Typo>
+      )}
       <SvgContainer>
         <SmileSvg
           hasFace={icon.hasFace}
@@ -50,8 +57,8 @@ export function BigCard({
         </OremSvg>
 
         <ArrowSvg xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
-          <path d="M0.351196 16.0541H31.0541" stroke="#34582E" stroke-width="2" />
-          <path d="M18.9346 3.93448L31.0541 16.054L18.9346 28.1736" stroke="#34582E" stroke-width="2" />
+          <path d="M0.351196 16.0541H31.0541" stroke="#34582E" strokeWidth="2" />
+          <path d="M18.9346 3.93448L31.0541 16.054L18.9346 28.1736" stroke="#34582E" strokeWidth="2" />
         </ArrowSvg>
       </SvgContainer>
     </Container>
@@ -69,24 +76,13 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   cursor: pointer;
-  h1 {
-    color: #000;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 140%; /* 33.6px */
-    padding: 16px 20px 2px 20px;
-  }
-  h2 {
-    padding: 0px 20px 2px 20px;
-    color: #8b8b8b;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 130%; /* 18.2px */
-  }
+  padding: 16px 20px;
 `;
 
 const SvgContainer = styled.div`
-  position: relative;
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
 `;

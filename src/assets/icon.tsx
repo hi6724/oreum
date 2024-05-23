@@ -42,8 +42,8 @@ export const Cloud = ({ ...rest }: any) => {
   return (
     <svg width="100" height="67" viewBox="0 0 100 67" fill="none" xmlns="http://www.w3.org/2000/svg" {...rest}>
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M76 66.8352C89.4999 65.3429 100 53.8977 100 40C100 25.0883 87.9117 13 73 13C72.5533 13 72.1092 13.0108 71.6679 13.0323C66.7041 5.19962 57.9593 0 48 0C34.9316 0 23.9543 8.9528 20.8668 21.0597C9.20283 21.9149 0 31.8589 0 44C0 56.7025 10.0736 67 22.5 67C22.6671 67 22.8338 66.9981 23 66.9944V67H73H76V66.8352Z"
         fill="white"
       />
@@ -51,7 +51,7 @@ export const Cloud = ({ ...rest }: any) => {
   );
 };
 
-export const weatherCard = {
+export const weatherCard: Record<string, JSX.Element> = {
   cloud: (
     <svg width="163" height="163" viewBox="0 0 163 163" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="163" height="163" rx="28" fill="#DCDCDC" />
@@ -60,8 +60,8 @@ export const weatherCard = {
       </mask>
       <g mask="url(#mask0_99_7556)">
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M94.0676 162.261C86.7378 176.366 71.994 186 55 186C30.6995 186 11 166.301 11 142C11 121.196 25.4385 103.764 44.8414 99.1785C49.2279 75.1856 70.2402 57 95.5 57C113.095 57 128.629 65.8236 137.919 79.2873C163.261 81.9909 183 103.44 183 129.5C183 157.39 160.39 180 132.5 180C117.111 180 103.33 173.117 94.0676 162.261Z"
           fill="white"
         />
@@ -76,8 +76,8 @@ export const weatherCard = {
       </mask>
       <g mask="url(#mask0_99_7573)">
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M145.075 80.2301C150.043 73.807 153 65.7488 153 57C153 36.0132 135.987 19 115 19C94.0132 19 77 36.0132 77 57C77 65.7488 79.9566 73.807 84.9251 80.2301C67.6075 90.5108 56 109.4 56 131C56 163.585 82.4152 190 115 190C147.585 190 174 163.585 174 131C174 109.4 162.393 90.5108 145.075 80.2301Z"
           fill="white"
         />

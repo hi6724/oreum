@@ -1,42 +1,40 @@
 "use client";
+import { scrapOremList } from "@/api";
 import { seasonalOrem } from "@/assets/icon";
 import Button from "@/components/common/Button";
 import Typo from "@/components/common/Typo";
+import { useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import styled from "styled-components";
 
-const DATA = [
-  {
-    title: "새별오름",
-    season: "spring",
-  },
-  {
-    title: "물영아리오름",
-    season: "summer",
-  },
-  {
-    title: "구름오름",
-    season: "autumn",
-  },
-  {
-    title: "카카오오름",
-    season: "winter",
-  },
-];
-const DATA2 = [];
+const seasonIcon: Record<string, JSX.Element> = {
+  봄: seasonalOrem.spring,
+  여름: seasonalOrem.summer,
+  가을: seasonalOrem.autumn,
+  겨울: seasonalOrem.winter,
+};
 
 function OremHistory() {
   const router = useRouter();
+  const uuid = localStorage.getItem("uuid") as string;
+
+  const { data: oremRes } = useQuery({
+    queryKey: ["scrap-orem", uuid],
+    queryFn: () => scrapOremList(uuid),
+    enabled: !!uuid,
+    select: (res) => res.data?.data,
+  });
+
   return (
     <Container>
       <Typo size={30} weight="bold">
         내가 다녀온 오름
       </Typo>
-      {DATA.length > 0 ? (
+      {oremRes?.count > 0 ? (
         <Typo size={20} weight="regular" color="#646464" style={{ marginBottom: "15px" }}>
           지금까지{" "}
           <Typo tag="span" color="#34582e" size={20} weight="bold">
-            {DATA.length}
+            {oremRes?.count ?? 0}
           </Typo>
           개의 오름에 방문하셨네요!
         </Typo>
@@ -45,12 +43,27 @@ function OremHistory() {
           내가 방문한 오름을 저장할 수 있어요
         </Typo>
       )}
-      {DATA.length > 0 ? <OremHistoryList /> : <OremNotFound />}
+      {(oremRes?.count ?? 0) > 0 ? (
+        <OremHistoryCardListContainer>
+          {oremRes?.orems?.reverse()?.map((orem: any, i: number) => (
+            <OremHistoryCardContainer key={i}>
+              {seasonIcon[orem.season]}
+              <Typo weight="semi-bold" size={16} color="gray07">
+                {orem.name}
+              </Typo>
+            </OremHistoryCardContainer>
+          ))}
+        </OremHistoryCardListContainer>
+      ) : (
+        <OremNotFound />
+      )}
       <div
         style={{ position: "fixed", bottom: 44, left: 0, padding: "0 24px", width: "100%" }}
         onClick={() => router.push("/season-recommendations-input")}
       >
-        <Button style={{ cursor: "pointer" }}>{DATA.length > 0 ? "오름 더 추천받기" : "첫 오름 추천받기"}</Button>
+        <Button style={{ cursor: "pointer" }}>
+          {(oremRes?.count ?? 0) > 0 ? "오름 더 추천받기" : "첫 오름 추천받기"}
+        </Button>
       </div>
     </Container>
   );
@@ -64,20 +77,6 @@ const Container = styled.div`
   padding: 40px 24px;
   gap: 10px;
 `;
-
-function OremHistoryList() {
-  // todo: react-query
-  return (
-    <OremHistoryCardListContainer>
-      {DATA.map((orem, i) => (
-        <OremHistoryCardContainer key={i}>
-          {seasonalOrem[orem.season as keyof typeof seasonalOrem]}
-          <Typo>{orem.title}</Typo>
-        </OremHistoryCardContainer>
-      ))}
-    </OremHistoryCardListContainer>
-  );
-}
 
 const OremHistoryCardListContainer = styled.div`
   display: grid;

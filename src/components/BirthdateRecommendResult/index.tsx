@@ -2,7 +2,6 @@
 
 import styled from "styled-components";
 import Button from "@/components/common/Button";
-import KakaoScript from "@/components/KakaoScript";
 import { useSearchParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { getOremByBirthdate } from "@/api";
@@ -10,6 +9,21 @@ import Typo from "@/components/common/Typo";
 import { OremPlant } from "@/assets/icon";
 import { toPng } from "html-to-image";
 import { useRef } from "react";
+import Splash from "../common/LoadingPage";
+import { josa } from "@toss/hangul";
+import axios from "axios";
+
+function dataURLtoFile(dataurl: any, filename: any) {
+  var arr = dataurl.split(","),
+    mime = arr[0].match(/:(.*?);/)[1],
+    bstr = atob(arr[arr.length - 1]),
+    n = bstr.length,
+    u8arr = new Uint8Array(n);
+  while (n--) {
+    u8arr[n] = bstr.charCodeAt(n);
+  }
+  return new File([u8arr], filename, { type: mime });
+}
 
 export default function BirthdateRecommendResult() {
   const router = useSearchParams();
@@ -46,30 +60,45 @@ export default function BirthdateRecommendResult() {
   const handleKakaotalkShare = () => {
     const { Kakao } = window;
 
-    const url = "http://172.30.1.86:3000/birthdate-recommendations-input";
+    const url = `${location.origin}/birthdate-recommendations-input`;
 
-    Kakao.Share.sendDefault({
-      objectType: "feed",
-      content: {
-        title: "나의 오름",
-        description: "나의 오름은 무엇일까요?",
-        imageUrl: "https://api.cdn.visitjeju.net/photomng/imgpath/201804/30/68cf14f3-16e9-48c3-8ce6-6f878d82ba93.jpg",
-        link: {
-          // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
-          mobileWebUrl: url,
-          webUrl: url,
-        },
-      },
-      buttons: [
-        {
-          title: "나의 오름 만들기",
-          link: {
-            mobileWebUrl: url,
-            webUrl: url,
-          },
-        },
-      ],
-    });
+    const box = resultRef.current;
+
+    if (!box) return;
+
+    toPng(box, { cacheBust: false })
+      .then((dataUrl) => {
+        const file = dataURLtoFile(dataUrl, "orem.png");
+        const formData = new FormData();
+        formData.append("file", file);
+        axios.post(`/api/save-file`, formData, { headers: { "Content-Type": "multipart/form-data" } }).then((res) => {
+          Kakao.Share.sendDefault({
+            objectType: "feed",
+            content: {
+              title: "나의 오름",
+              description: "나의 오름은 무엇일까요?",
+              imageUrl: `${location.origin}/uploads/${res.data.path}`,
+              link: {
+                // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
+                mobileWebUrl: url,
+                webUrl: url,
+              },
+            },
+            buttons: [
+              {
+                title: "나의 오름 만들기",
+                link: {
+                  mobileWebUrl: url,
+                  webUrl: url,
+                },
+              },
+            ],
+          });
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const resultRef = useRef<HTMLDivElement>(null);
@@ -90,7 +119,7 @@ export default function BirthdateRecommendResult() {
       });
   };
 
-  return (
+  return oremResponse ? (
     <Wrapper>
       <ResultBox ref={resultRef}>
         <OremPlant />
@@ -101,15 +130,23 @@ export default function BirthdateRecommendResult() {
           <Typo weight="bold" size={30} color="gray07">
             당신은{" "}
             <Typo color="bg" size={30} weight="bold" tag="span">
-              {oremResponse?.adjective} {oremResponse?.plantResponse?.plantName}
+              {oremResponse?.adjective}
             </Typo>
-            가<br />
-            자라나고 있는
             <br />
+            <Typo color="bg" size={30} weight="bold" tag="span">
+              {oremResponse?.plantResponse?.plantName}
+            </Typo>
+            {josa(oremResponse?.plantResponse?.plantName ?? "", "이/가").replace(
+              oremResponse?.plantResponse?.plantName,
+              "",
+            )}{" "}
+            자라나고
+            <br />
+            있는{" "}
             <Typo color="bg" size={30} weight="bold" tag="span">
               {oremResponse?.oremName}
             </Typo>
-            이에요.
+            {josa(oremResponse?.oremName ?? "", "이에요/예요").replace(oremResponse?.oremName, "")}
           </Typo>
         </TextBox>
       </ResultBox>
@@ -122,7 +159,7 @@ export default function BirthdateRecommendResult() {
               {oremResponse?.plantResponse?.plantName}
             </Typo>
             <Typo size={16} color="gray07">
-              {oremResponse?.plantResponse?.desc}
+              {oremResponse?.plantResponse?.description}
             </Typo>
           </div>
         </PlantBox>
@@ -139,6 +176,8 @@ export default function BirthdateRecommendResult() {
         </ButtonBox>
       </Container>
     </Wrapper>
+  ) : (
+    <Splash />
   );
 }
 
@@ -192,7 +231,6 @@ const PlantBox = styled("div")`
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  margin-top: 18px;
 
   img {
     width: 100%;

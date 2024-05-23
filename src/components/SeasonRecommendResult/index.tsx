@@ -6,8 +6,11 @@ import Link from "next/link";
 import Typo from "@/components/common/Typo";
 import { seasonalOrem } from "@/assets/icon";
 import { useSearchParams } from "next/navigation";
-import { useQuery } from "@tanstack/react-query";
-import { getOremBySeason } from "@/api";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { getOremBySeason, saveOrem } from "@/api";
+import Splash from "../common/LoadingPage";
+import Image from "next/image";
+import { useState } from "react";
 
 const seasonIcon: Record<string, JSX.Element> = {
   봄: seasonalOrem.spring,
@@ -31,11 +34,31 @@ export default function Page() {
     refetch();
   };
 
+  const [isSaved, setIsSaved] = useState(false);
+  const { mutate } = useMutation({
+    mutationFn: saveOrem,
+  });
   const handleSaveOrem = () => {
-    // TODO
+    const uuid = localStorage.getItem("uuid") as string;
+
+    if (!oremResponse) return;
+
+    mutate(
+      {
+        oremId: oremResponse.id,
+        uuid,
+      },
+      {
+        onSuccess: (res) => {
+          if (res.data?.data === "Success") {
+            setIsSaved(true);
+          }
+        },
+      },
+    );
   };
 
-  return (
+  return oremResponse ? (
     <Container>
       <div>
         <TextBox>
@@ -50,12 +73,12 @@ export default function Page() {
           </OremNameBox>
         </TextBox>
         <ImageBox>
-          <img src={oremResponse?.imageUrl} alt={`${oremResponse?.name} 이미지`} />
+          <Image src={oremResponse?.imageUrl} alt={`${oremResponse?.name} 이미지`} fill objectFit="cover" />
           <div>
             <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M8.49022 16.8625C10.4989 14.1881 13.8266 9.36424 13.8266 6.75826C13.8266 3.02577 10.7703 0 7.00011 0C3.22992 0 0.173584 3.02577 0.173584 6.75826C0.173584 9.36424 3.50131 14.1881 5.50999 16.8625C6.26535 17.8682 7.73486 17.8682 8.49022 16.8625ZM6.99993 10.8086C9.1992 10.8086 10.9821 9.02578 10.9821 6.8265C10.9821 4.62723 9.1992 2.84437 6.99993 2.84437C4.80066 2.84437 3.01779 4.62723 3.01779 6.8265C3.01779 9.02578 4.80066 10.8086 6.99993 10.8086Z"
                 fill="white"
               />
@@ -70,17 +93,24 @@ export default function Page() {
             <Tag key={keyword}># {keyword}</Tag>
           ))}
         </TagBox>
-        <Typo size={14}>{oremResponse?.desc}</Typo>
+        <Typo size={14}>{oremResponse?.description}</Typo>
       </div>
       <ButtonBox>
         <Button color="brown" width={114} onClick={handleAgainRecommend}>
           다시 추천받기
         </Button>
-        <Button onClick={handleSaveOrem}>다녀온 오름에 저장하기</Button>
-        {/* <Button variant="outlined">저장된 오름 보기</Button> */}
+        {isSaved ? (
+          <Link href="orem-history">
+            <Button variant="outlined">저장된 오름 보기</Button>
+          </Link>
+        ) : (
+          <Button onClick={handleSaveOrem}>다녀온 오름에 저장하기</Button>
+        )}
       </ButtonBox>
       <BigCircle />
     </Container>
+  ) : (
+    <Splash />
   );
 }
 
@@ -154,6 +184,14 @@ const ButtonBox = styled("div")`
   margin-top: 64px;
   display: flex;
   column-gap: 6px;
+
+  a {
+    width: 100%;
+  }
+
+  button:first-child {
+    flex-shrink: 0;
+  }
 `;
 
 const BigCircle = styled("div")`

@@ -1,10 +1,11 @@
 export interface SeasonRecommedResponse {
+  id: number;
   name: string;
   city: string;
   placeUrl: string;
   keywords: string[];
   imageUrl: string;
-  desc: string;
+  description: string;
 }
 
 export interface BirthdateRecommedResponse {
@@ -16,7 +17,7 @@ export interface BirthdateRecommedResponse {
     distribution: string;
     floweringPeriod: string;
     height: string;
-    desc: string;
+    description: string;
     imageUrl: string;
   };
 }

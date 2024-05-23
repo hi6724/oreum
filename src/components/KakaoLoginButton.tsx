@@ -5,7 +5,7 @@ export default function KakaoLoginButton() {
   const handleKakaoLogin = () => {
     window.Kakao.Auth.authorize({
       redirectUri: process.env.NEXT_PUBLIC_KAKAO_REDIRECT,
-      scope: ["profile_nickname", "account_email"].join(","),
+      scope: ["profile_nickname"].join(","),
     });
   };
 

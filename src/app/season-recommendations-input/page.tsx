@@ -44,7 +44,9 @@ export default function Page() {
               }}
             >
               {season.icon}
-              <Typo>{season.text}</Typo>
+              <Typo weight="bold" size={20}>
+                {season.text}
+              </Typo>
             </SeasonItem>
           );
         })}

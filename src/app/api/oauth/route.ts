@@ -8,6 +8,7 @@ export async function POST(request: NextRequest) {
 
   const kakaoAccessToken = await getKakaoToken(code as string);
   const kakaoUserProfile = await getKakaoUserProfile(kakaoAccessToken);
+  console.log(kakaoUserProfile);
 
   return NextResponse.json({ name: kakaoUserProfile.properties.nickname, uuid: kakaoUserProfile.id }, { status: 200 });
 }
@@ -17,7 +18,7 @@ const getKakaoToken = async (code: string) => {
     // qs.stringify를 사용해서 파라미터들을 쿼리 스트링 형식으로 만든다.
     const payload = qs.stringify({
       grant_type: "authorization_code",
-      client_id: "4e1c361cdfa5bb3f44be12bc61a3fb1a",
+      client_id: "945771c9ce8ae82ab35fc53530f11ccf",
       redirect_uri: process.env.KAKAO_REDIRECT,
       code: code,
     });
@@ -44,7 +45,6 @@ const getKakaoUserProfile = async (kakaoAccessToken: string) => {
         "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
       },
     });
-    console.log(kakaoUserProfile);
 
     return kakaoUserProfile.data;
   } catch (error) {
