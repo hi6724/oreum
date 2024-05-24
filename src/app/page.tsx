@@ -5,11 +5,17 @@ import KakaoLoginButton from "@/components/KakaoLoginButton";
 import Button from "@/components/common/Button";
 import Typo from "@/components/common/Typo";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import styled, { useTheme } from "styled-components";
 
 export default function Home() {
   const theme = useTheme();
   const router = useRouter();
+  const token = localStorage.getItem("uuid");
+
+  useEffect(() => {
+    if (token) router.push("/home");
+  }, [token, router]);
 
   return (
     <Container>
