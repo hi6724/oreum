@@ -108,7 +108,7 @@ export default function Home() {
             onClick={() => router.push("/birthdate-recommendations-input")}
           />
         </CardContainer>
-        <Typo size={16} weight="regular" color={theme.gray05} style={{ textAlign: "center", marginTop: "36px" }}>
+        <Typo size={16} weight="regular" color={theme.gray05} style={{ textAlign: "center", margin: "36px 0 44px 0" }}>
           소중한 제주의 자연을 지켜요
         </Typo>
       </Container>
