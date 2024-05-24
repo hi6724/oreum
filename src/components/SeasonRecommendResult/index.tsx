@@ -83,6 +83,7 @@ export default function Page() {
   };
   useEffect(() => {
     if (!oremResponse || !oremList) return;
+
     setIsSaved(oremList.orems?.some((orem: any) => orem.oremId === oremResponse?.id));
   }, [oremResponse, oremList]);
 
