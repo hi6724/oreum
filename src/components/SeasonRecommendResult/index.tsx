@@ -125,7 +125,7 @@ export default function Page() {
           </TagBox>
           <Typo size={14}>{oremResponse?.description}</Typo>
         </div>
-        <ButtonBox>
+        <ButtonBox style={{ marginBottom: 44 }}>
           <Button color="brown" width={114} onClick={handleAgainRecommend}>
             다시 추천받기
           </Button>
@@ -173,8 +173,8 @@ export default function Page() {
 }
 
 const Container = styled("div")`
-  height: 100%;
-  padding: 40px 24px 44px 24px;
+  min-height: 100%;
+  padding: 40px 24px 0px 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

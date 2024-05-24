@@ -51,7 +51,7 @@ export default function Page() {
           );
         })}
       </SeasonList>
-      <ButtonBox>
+      <ButtonBox style={{ marginBottom: 44 }}>
         <Button disabled={!selectedSeason} onClick={handleRecommendOrem}>
           오름 추천 받기
         </Button>
@@ -81,8 +81,8 @@ const seasonList = [
 ];
 
 const Container = styled("div")`
-  height: 100%;
-  padding: 40px 24px 44px 24px;
+  min-height: 100%;
+  padding: 40px 24px 0px 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
