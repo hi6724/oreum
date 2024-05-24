@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "어떵오름",
-  description: "어떵오름",
+  description: "나와 제주의 자연을 잇는 서비스",
   icons: {
     icon: "/favicon.png",
   },
