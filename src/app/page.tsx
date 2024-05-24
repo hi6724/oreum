@@ -10,6 +10,7 @@ import styled, { useTheme } from "styled-components";
 export default function Home() {
   const theme = useTheme();
   const router = useRouter();
+
   return (
     <Container>
       <Typo
@@ -32,7 +33,13 @@ export default function Home() {
 
       <BottomContainer>
         <KakaoLoginButton />
-        <Button style={{ cursor: "pointer" }} onClick={() => router.push("/home")}>
+        <Button
+          style={{ cursor: "pointer" }}
+          onClick={() => {
+            localStorage.removeItem("uuid");
+            router.push("/home");
+          }}
+        >
           <Typo size={16} weight="bold" color={theme.bg}>
             둘러보기
           </Typo>
