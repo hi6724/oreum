@@ -151,7 +151,7 @@ export default function BirthdateRecommendResult() {
             {month}월 {day}일, {seasonTextByMonth}
           </Typo>
           <Typo weight="bold" size={30} color="gray07">
-            당신은{" "}
+            당신의 친구는{" "}
             <Typo color="bg" size={30} weight="bold" tag="span">
               {oremResponse?.adjective}
             </Typo>
