@@ -119,6 +119,7 @@ const SeasonItem = styled("button")<SeasonItemProps>`
   flex-shrink: 0;
   border-radius: 28px;
   background-color: ${({ $isSelected }) => ($isSelected ? "#fff" : "#f0e9df")};
+  transition: background-color 0.2s;
 
   display: flex;
   align-items: center;
