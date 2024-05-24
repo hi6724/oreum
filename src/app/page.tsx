@@ -5,20 +5,18 @@ import KakaoLoginButton from "@/components/KakaoLoginButton";
 import Button from "@/components/common/Button";
 import Typo from "@/components/common/Typo";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import styled, { useTheme } from "styled-components";
 
 export default function Home() {
   const theme = useTheme();
   const router = useRouter();
-  const token = localStorage.getItem("uuid");
-
-  useEffect(() => {
-    if (token) router.push("/home");
-  }, [token, router]);
 
   return (
     <Container>
+      <Suspense fallback={null}>
+        <AutoLogin />
+      </Suspense>
       <Typo
         size={36}
         weight="bold"
@@ -54,6 +52,15 @@ export default function Home() {
       <BigCircle />
     </Container>
   );
+}
+
+function AutoLogin() {
+  const token = typeof window !== "undefined" ? localStorage.getItem("uuid") : "";
+  const router = useRouter();
+  useEffect(() => {
+    if (token) router.replace("/home");
+  }, [token, router]);
+  return null;
 }
 const Container = styled.div`
   position: relative;
