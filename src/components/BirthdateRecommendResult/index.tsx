@@ -50,10 +50,10 @@ export default function BirthdateRecommendResult() {
     return "겨울";
   })();
 
-  const { data: oremResponse } = useQuery({
+  const { data } = useQuery({
     queryKey: ["birthdate", month, day],
-    queryFn: () => getOremByBirthdate(Number(month), Number(day)),
-    enabled: Boolean(month && day),
+    queryFn: () => getOremByBirthdate(Number(month), Number(day), seasonTextByMonth!),
+    enabled: Boolean(month && day && seasonTextByMonth),
     select: (res) => res.data.data,
   });
 
@@ -71,7 +71,7 @@ export default function BirthdateRecommendResult() {
       content: {
         title: "어떵오름",
         description: "내 오름과 식물 친구 만들기",
-        imageUrl: oremResponse?.plantResponse.imageUrl ?? "", // TODO
+        imageUrl: data?.plantResponse.imageUrl ?? "", // TODO
         link: {
           // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
           mobileWebUrl: url,
@@ -88,40 +88,6 @@ export default function BirthdateRecommendResult() {
         },
       ],
     });
-
-    // toPng(box, { cacheBust: false })
-    //   .then((dataUrl) => {
-    //     const file = dataURLtoFile(dataUrl, "orem.png");
-    //     const formData = new FormData();
-    //     formData.append("file", file);
-    //     axios.post(`/api/save-file`, formData, { headers: { "Content-Type": "multipart/form-data" } }).then((res) => {
-    //       Kakao.Share.sendDefault({
-    //         objectType: "feed",
-    //         content: {
-    //           title: "나의 오름",
-    //           description: "나의 오름은 무엇일까요?",
-    //           imageUrl: `${location.origin}/uploads/${res.data.path}`,
-    //           link: {
-    //             // [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
-    //             mobileWebUrl: url,
-    //             webUrl: url,
-    //           },
-    //         },
-    //         buttons: [
-    //           {
-    //             title: "나의 오름 만들기",
-    //             link: {
-    //               mobileWebUrl: url,
-    //               webUrl: url,
-    //             },
-    //           },
-    //         ],
-    //       });
-    //     });
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
   };
 
   const resultRef = useRef<HTMLDivElement>(null);
@@ -142,7 +108,7 @@ export default function BirthdateRecommendResult() {
       });
   };
 
-  return oremResponse ? (
+  return data ? (
     <Wrapper>
       <ResultBox ref={resultRef}>
         <OremPlant />
@@ -153,36 +119,32 @@ export default function BirthdateRecommendResult() {
           <Typo weight="bold" size={30} color="gray07">
             당신의 친구는{" "}
             <Typo color="bg" size={30} weight="bold" tag="span">
-              {oremResponse?.adjective}
+              {data?.adjective}
             </Typo>
             <br />
             <Typo color="bg" size={30} weight="bold" tag="span">
-              {oremResponse?.plantResponse?.plantName}
+              {data?.plantResponse?.plantName}
             </Typo>
-            {josa(oremResponse?.plantResponse?.plantName ?? "", "이/가").replace(
-              oremResponse?.plantResponse?.plantName,
-              "",
-            )}{" "}
-            자라나고
+            {josa(data?.plantResponse?.plantName ?? "", "이/가").replace(data?.plantResponse?.plantName, "")} 자라나고
             <br />
             있는{" "}
             <Typo color="bg" size={30} weight="bold" tag="span">
-              {oremResponse?.oremName}
+              {data?.oremName}
             </Typo>
-            {josa(oremResponse?.oremName ?? "", "이에요/예요").replace(oremResponse?.oremName, "")}
+            {josa(data?.oremName ?? "", "이에요/예요").replace(data?.oremName, "")}
           </Typo>
         </TextBox>
       </ResultBox>
 
       <Container>
         <PlantBox>
-          <img src={oremResponse?.plantResponse?.imageUrl} alt={`${oremResponse?.plantResponse?.plantName} 이미지`} />
+          <img src={data?.plantResponse?.imageUrl} alt={`${data?.plantResponse?.plantName} 이미지`} />
           <div className="text-box">
             <Typo weight="bold" size={16} color="gray07">
-              {oremResponse?.plantResponse?.plantName}
+              {data?.plantResponse?.plantName}
             </Typo>
             <Typo size={16} color="gray07">
-              {oremResponse?.plantResponse?.description}
+              {data?.plantResponse?.description}
             </Typo>
           </div>
         </PlantBox>

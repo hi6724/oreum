@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import { BirthdateRecommedResponse, SeasonRecommedResponse } from "./dto";
 
 const http = axios.create({
-  baseURL: "https://k417ce4df2d7da.user-app.krampoline.com/api",
+  baseURL: "",
 });
 
 interface BaseResponse<T> {
@@ -13,17 +13,19 @@ interface BaseResponse<T> {
 export const getOremByBirthdate = (
   month: number,
   day: number,
+  season: string,
 ): Promise<AxiosResponse<BaseResponse<BirthdateRecommedResponse>>> => {
-  return http.get("/orem/recommend/birthday", {
+  return http.get("/birthdate-recommendations-result/api", {
     params: {
       month,
       day,
+      season,
     },
   });
 };
 
 export const getOremBySeason = (season?: string): Promise<AxiosResponse<BaseResponse<SeasonRecommedResponse>>> => {
-  return http.get("/orem/recommend", {
+  return http.get("/season-recommendations-result/api", {
     params: {
       season,
     },

@@ -34,11 +34,11 @@ export default function RootLayout({
         </Head>
         <body className={inter.className}>
           <KakaoScript />
-          <Transition>
-            <ThemeClient>
-              <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
-            </ThemeClient>
-          </Transition>
+          {/* <Transition> */}
+          <ThemeClient>
+            <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+          </ThemeClient>
+          {/* </Transition> */}
         </body>
       </html>
     </ReactQueryClientProvider>

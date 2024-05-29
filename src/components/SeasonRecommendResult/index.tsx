@@ -12,6 +12,7 @@ import Splash from "../common/LoadingPage";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import KakaoLoginButton from "../KakaoLoginButton";
+import { removeDuplicates } from "@/utils/list";
 
 const seasonIcon: Record<string, JSX.Element> = {
   봄: seasonalOrem.spring,
@@ -24,6 +25,7 @@ export default function Page() {
   const router = useSearchParams();
   const season = router.get("season") as string;
   const [loading, setLoading] = useState(false);
+
   const {
     data: oremResponse,
     refetch,
@@ -37,14 +39,7 @@ export default function Page() {
   });
 
   const uuid = typeof window !== "undefined" ? (localStorage.getItem("uuid") as string) : "";
-
-  const { data: oremList, isFetched: isListFetched } = useQuery({
-    queryKey: ["scrap-orem", uuid],
-    queryFn: () => scrapOremList(uuid),
-    enabled: !!uuid,
-    select: (res) => res.data?.data,
-  });
-
+  const oremList = typeof window !== "undefined" && JSON.parse(localStorage.getItem("orem-list") ?? "[]");
   const handleAgainRecommend = () => {
     setLoading(true);
     setTimeout(() => {
@@ -55,39 +50,23 @@ export default function Page() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
-  const { mutate } = useMutation({
-    mutationFn: saveOrem,
-  });
+
   const handleSaveOrem = () => {
-    const uuid = localStorage.getItem("uuid") as string;
-
     if (!oremResponse) return;
-
     if (uuid) {
-      mutate(
-        {
-          oremId: oremResponse.id,
-          uuid,
-        },
-        {
-          onSuccess: (res) => {
-            if (res.data?.data === "Success") {
-              setIsSaved(true);
-            }
-          },
-        },
-      );
+      const newOremList = removeDuplicates([...oremList, oremResponse], "name");
+      localStorage.setItem("orem-list", JSON.stringify(newOremList));
+      setIsSaved(true);
     } else {
       setIsModalOpen(true);
     }
   };
   useEffect(() => {
     if (!oremResponse || !oremList) return;
-
-    setIsSaved(oremList.orems?.some((orem: any) => orem.oremId === oremResponse?.id));
+    setIsSaved(oremList?.some((orem: any) => orem.name === oremResponse?.name));
   }, [oremResponse, oremList]);
 
-  return isFetched || isListFetched ? (
+  return isFetched ? (
     <>
       <Container>
         <div>
@@ -119,7 +98,7 @@ export default function Page() {
             </div>
           </ImageBox>
           <TagBox>
-            {oremResponse?.keywords.map((keyword) => (
+            {oremResponse?.keywords?.map((keyword) => (
               <Tag key={keyword}># {keyword}</Tag>
             ))}
           </TagBox>

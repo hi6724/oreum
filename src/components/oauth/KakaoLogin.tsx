@@ -16,12 +16,8 @@ export default function KakaoLogin() {
       const kakaoUserProfile = await getKakaoUserProfile(kakaoAccessToken);
 
       if (kakaoUserProfile) {
-        registerMember(kakaoUserProfile.id, kakaoUserProfile.properties.nickname).then((res) => {
-          if (res.data.data === "Success") {
-            localStorage.setItem("uuid", kakaoUserProfile.id);
-            router.push("/home");
-          }
-        });
+        localStorage.setItem("uuid", kakaoUserProfile.id);
+        router.push("/home");
       }
     })();
   }, [code]);
