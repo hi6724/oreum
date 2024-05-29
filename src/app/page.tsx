@@ -27,6 +27,7 @@ export default function Home() {
           display: "flex",
           justifyContent: "center",
           width: "100%",
+          zIndex: 1,
         }}
       >
         나의 제주, <br /> 오름과 함께
@@ -79,6 +80,7 @@ const BottomContainer = styled.div`
   width: 100%;
   gap: 16px;
   padding: 0 24px 44px 24px;
+  z-index: 1;
 `;
 
 const Sun = styled.div`
@@ -99,5 +101,4 @@ const BigCircle = styled.div`
   left: 50%;
   transform: translate(-50%, 50%);
   border-radius: 100%;
-  z-index: -1;
 `;
