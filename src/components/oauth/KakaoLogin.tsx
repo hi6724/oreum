@@ -30,7 +30,7 @@ const getKakaoToken = async (code: string) => {
     // qs.stringify를 사용해서 파라미터들을 쿼리 스트링 형식으로 만든다.
     const payload = qs.stringify({
       grant_type: "authorization_code",
-      client_id: "945771c9ce8ae82ab35fc53530f11ccf",
+      client_id: "9446fa7838095ab2e3111d4554798c1e",
       redirect_uri: process.env.KAKAO_REDIRECT,
       code: code,
     });
