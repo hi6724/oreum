@@ -24,6 +24,14 @@ export const getOremByBirthdate = (
   });
 };
 
+export const getOremById = (id: string): Promise<AxiosResponse<BaseResponse<SeasonRecommedResponse>>> => {
+  return http.get("/orem/detail/api", {
+    params: {
+      id,
+    },
+  });
+};
+
 export const getOremBySeason = (season?: string): Promise<AxiosResponse<BaseResponse<SeasonRecommedResponse>>> => {
   return http.get("/season-recommendations-result/api", {
     params: {

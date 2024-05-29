@@ -1,5 +1,6 @@
 export const OREM = [
   {
+    id: 1,
     name: "가메오름",
     city: "제주시",
     location: "제주서부",
@@ -13,6 +14,7 @@ export const OREM = [
     season: "여름",
   },
   {
+    id: 2,
     name: "가세오름",
     city: "서귀포시",
     location: "서귀포동부",
@@ -27,6 +29,7 @@ export const OREM = [
     season: "봄",
   },
   {
+    id: 3,
     name: "개오름",
     city: "서귀포시",
     location: "서귀포동부",
@@ -41,6 +44,7 @@ export const OREM = [
     season: "겨울",
   },
   {
+    id: 4,
     name: "거문오름",
     city: "제주시",
     location: "제주동부",
@@ -55,6 +59,7 @@ export const OREM = [
     season: "가을",
   },
   {
+    id: 5,
     name: "군산",
     city: "서귀포시",
     location: "서귀포서부",
@@ -69,6 +74,7 @@ export const OREM = [
     season: "가을",
   },
   {
+    id: 6,
     name: "다랑쉬오름",
     city: "제주시",
     location: "제주동부",
@@ -83,6 +89,7 @@ export const OREM = [
     season: "가을",
   },
   {
+    id: 7,
     name: "단산",
     city: "서귀포시",
     location: "서귀포서부",
@@ -97,6 +104,7 @@ export const OREM = [
     season: "봄",
   },
   {
+    id: 8,
     name: "새별오름",
     city: "제주시",
     location: "제주서부",
@@ -111,6 +119,7 @@ export const OREM = [
     season: "봄",
   },
   {
+    id: 9,
     name: "아부오름",
     city: "제주시",
     location: "제주동부",
@@ -125,6 +134,7 @@ export const OREM = [
     season: "가을",
   },
   {
+    id: 10,
     name: "안돌오름",
     city: "제주시",
     location: "제주동부",
@@ -139,6 +149,7 @@ export const OREM = [
     season: "봄",
   },
   {
+    id: 11,
     name: "영천악",
     city: "서귀포시",
     location: "서귀포시",
@@ -153,6 +164,7 @@ export const OREM = [
     season: "겨울",
   },
   {
+    id: 12,
     name: "용눈이오름",
     city: "제주시",
     location: "제주동부",
@@ -167,6 +179,7 @@ export const OREM = [
     season: "여름",
   },
   {
+    id: 13,
     name: "웃세(족은)오름",
     city: "제주시",
     location: "제주서부",
@@ -181,6 +194,7 @@ export const OREM = [
     season: "가을",
   },
   {
+    id: 14,
     name: "윗세오름",
     city: "서귀포시",
     location: "서귀포시",
@@ -195,6 +209,7 @@ export const OREM = [
     season: "겨울",
   },
   {
+    id: 15,
     name: "이승이오름",
     city: "서귀포시",
     location: "서귀포동부",
@@ -209,6 +224,7 @@ export const OREM = [
     season: "겨울",
   },
   {
+    id: 16,
     name: "절물오름",
     city: "제주시",
     location: "제주시",
@@ -222,6 +238,7 @@ export const OREM = [
     season: "여름",
   },
   {
+    id: 17,
     name: "정물오름",
     city: "제주시",
     location: "제주서부",
@@ -236,6 +253,7 @@ export const OREM = [
     season: "여름",
   },
   {
+    id: 18,
     name: "큰바리메",
     city: "제주시",
     location: "제주서부",
@@ -250,6 +268,7 @@ export const OREM = [
     season: "여름",
   },
   {
+    id: 19,
     name: "토산봉",
     city: "서귀포시",
     location: "서귀포동부",

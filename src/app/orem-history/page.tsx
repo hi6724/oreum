@@ -85,7 +85,7 @@ function OremHistoryComponent() {
       {oremList?.length ? (
         <OremHistoryCardListContainer>
           {oremList?.reverse()?.map((orem: any, i: number) => (
-            <OremHistoryCardContainer key={i}>
+            <OremHistoryCardContainer key={i} onClick={() => router.push(`/orem/${orem.id}`)}>
               {seasonIcon[orem.season]}
               <Typo weight="semi-bold" size={16} color="gray07">
                 {orem.name}
@@ -96,7 +96,7 @@ function OremHistoryComponent() {
       ) : (
         <OremNotFound />
       )}
-      {oremList.length === 0 && <OremNotFound />}
+
       <div
         style={{ position: "fixed", bottom: 44, left: 0, padding: "0 24px", width: "100%" }}
         onClick={() => router.push("/season-recommendations-input")}
