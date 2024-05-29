@@ -98,7 +98,7 @@ function OremHistoryComponent() {
       )}
 
       <div
-        style={{ position: "fixed", bottom: 44, left: 0, padding: "0 24px", width: "100%" }}
+        style={{ position: "absolute", bottom: 44, left: 0, padding: "0 24px", width: "100%" }}
         onClick={() => router.push("/season-recommendations-input")}
       >
         <Button style={{ cursor: "pointer" }}>

@@ -69,7 +69,7 @@ export default function Page() {
   return isFetched ? (
     <>
       <Container>
-        <div>
+        <div style={{ zIndex: 1 }}>
           <TextBox>
             <Typo size={20} color="#646464">
               {season}엔 이 오름을 추천해요
@@ -157,6 +157,8 @@ const Container = styled("div")`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
+  overflow: hidden;
 `;
 
 const TextBox = styled("div")`
@@ -221,7 +223,7 @@ const ButtonBox = styled("div")`
   margin-top: 64px;
   display: flex;
   column-gap: 6px;
-
+  z-index: 1;
   a {
     width: 100%;
   }
@@ -236,11 +238,10 @@ const BigCircle = styled("div")`
   height: 1112px;
   background-color: #e2dacf;
   border-radius: 9999px;
-  position: fixed;
+  position: absolute;
   top: 28%;
   left: 50%;
   transform: translateX(-50%);
-  z-index: -1;
 `;
 
 const ModalWrapper = styled.div<{ isShow: boolean }>`

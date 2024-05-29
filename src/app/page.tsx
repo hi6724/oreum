@@ -71,7 +71,7 @@ const Container = styled.div`
 `;
 
 const BottomContainer = styled.div`
-  position: fixed;
+  position: absolute;
   bottom: 0px;
   display: flex;
   flex-direction: column;
@@ -91,7 +91,7 @@ const Sun = styled.div`
   right: 24px;
 `;
 const BigCircle = styled.div`
-  position: fixed;
+  position: absolute;
   background-color: #5d8058;
   width: 1000px;
   height: 1000px;

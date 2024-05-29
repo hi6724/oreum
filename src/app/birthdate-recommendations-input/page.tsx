@@ -43,6 +43,7 @@ export default function Page() {
         onChange={setPickerValue}
         style={{
           width: "100%",
+          zIndex: 1,
         }}
       >
         {Object.keys(selections).map((name) => {
@@ -78,6 +79,7 @@ const Container = styled("div")`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
 `;
 
 const TextBox = styled("div")`
@@ -85,10 +87,12 @@ const TextBox = styled("div")`
   flex-direction: column;
   row-gap: 9px;
   margin-bottom: 48px;
+  z-index: 1;
 `;
 
 const ButtonBox = styled("div")`
   width: 100%;
+  z-index: 1;
 `;
 
 const BigCircle = styled("div")`
@@ -100,5 +104,5 @@ const BigCircle = styled("div")`
   top: 35%;
   left: 50%;
   transform: translateX(-50%);
-  z-index: -1;
+  position: absolute;
 `;

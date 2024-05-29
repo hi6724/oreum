@@ -86,12 +86,15 @@ const Container = styled("div")`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
+  position: relative;
 `;
 
 const TextBox = styled("div")`
   display: flex;
   flex-direction: column;
   row-gap: 9px;
+  z-index: 1;
 `;
 
 const SeasonList = styled("div")`
@@ -99,6 +102,7 @@ const SeasonList = styled("div")`
   flex-wrap: wrap;
   gap: 22px;
   margin-top: 75px;
+  z-index: 1;
 `;
 
 type SeasonItemProps = {
@@ -131,16 +135,16 @@ const SeasonItem = styled("button")<SeasonItemProps>`
 const ButtonBox = styled("div")`
   width: 100%;
   margin-top: 44px;
+  z-index: 1;
 `;
 
 const BigCircle = styled("div")`
-  width: 1112px;
-  height: 1112px;
+  width: 1000px;
+  height: 1000px;
   background-color: #e2dacf;
-  border-radius: 9999px;
-  position: fixed;
+  border-radius: 100%;
+  position: absolute;
   top: 28%;
   left: 50%;
   transform: translateX(-50%);
-  z-index: -1;
 `;

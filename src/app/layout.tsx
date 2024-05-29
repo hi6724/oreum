@@ -32,13 +32,23 @@ export default function RootLayout({
             href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
           />
         </Head>
-        <body className={inter.className}>
-          <KakaoScript />
-          <Transition>
-            <ThemeClient>
-              <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
-            </ThemeClient>
-          </Transition>
+        <body className={inter.className} style={{ display: "flex", justifyContent: "center", background: "#dcdcdc" }}>
+          <div
+            style={{
+              position: "relative",
+              maxWidth: "400px",
+              width: "100%",
+              overflowX: "hidden",
+              background: "#f1f1f1",
+            }}
+          >
+            <KakaoScript />
+            <Transition>
+              <ThemeClient>
+                <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+              </ThemeClient>
+            </Transition>
+          </div>
         </body>
       </html>
     </ReactQueryClientProvider>
