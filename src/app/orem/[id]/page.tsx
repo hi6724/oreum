@@ -5,14 +5,10 @@ import Button from "@/components/common/Button";
 import Link from "next/link";
 import Typo from "@/components/common/Typo";
 import { seasonalOrem } from "@/assets/icon";
-import { useParams, usePathname, useSearchParams } from "next/navigation";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { getOremById, getOremBySeason, saveOrem, scrapOremList } from "@/api";
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import { removeDuplicates } from "@/utils/list";
+import { useParams } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
+import { getOremById } from "@/api";
 import Splash from "@/components/common/LoadingPage";
-import KakaoLoginButton from "@/components/KakaoLoginButton";
 
 const seasonIcon: Record<string, JSX.Element> = {
   봄: seasonalOrem.spring,
@@ -39,7 +35,7 @@ export default function Page() {
   return oremResponse ? (
     <>
       <Container>
-        <div>
+        <div style={{ zIndex: 1 }}>
           <TextBox>
             <OremNameBox>
               <Typo weight="bold" size={30}>
@@ -90,6 +86,8 @@ const Container = styled("div")`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
+  position: relative;
 `;
 
 const TextBox = styled("div")`
@@ -154,7 +152,7 @@ const ButtonBox = styled("div")`
   margin-top: 64px;
   display: flex;
   column-gap: 6px;
-
+  z-index: 1;
   a {
     width: 100%;
   }
@@ -169,11 +167,10 @@ const BigCircle = styled("div")`
   height: 1112px;
   background-color: #e2dacf;
   border-radius: 9999px;
-  position: fixed;
+  position: absolute;
   top: 28%;
   left: 50%;
   transform: translateX(-50%);
-  z-index: -1;
 `;
 
 const ModalWrapper = styled.div<{ isShow: boolean }>`
