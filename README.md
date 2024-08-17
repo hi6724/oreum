@@ -1,36 +1,11 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 어떵오름
+### 나와 제주의 자연을 잇는 서비스
+구름톤 in JEJU 10기 최우수상 (구름 기업상)
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![9oormthon](https://github.com/Orem-on-Clouds/.github/blob/main/profile/9oormthon.png)
+<img width="1277" alt="image" src="https://github.com/Orem-on-Clouds/.github/assets/58321856/6765c870-f4c0-4ae5-aa5d-a27f91a4d94b">
+<img width="1263" alt="image" src="https://github.com/Orem-on-Clouds/.github/assets/58321856/8129651a-cca1-4578-b10d-6f83d5cd23f9">
+<img width="1262" alt="image" src="https://github.com/Orem-on-Clouds/.github/assets/58321856/eae59324-9da8-4549-b50b-47e9ff40572e">
+<img width="1269" alt="image" src="https://github.com/Orem-on-Clouds/.github/assets/58321856/187fcd04-293b-406e-be56-d429cab70b32">
+<img width="1269" alt="image" src="https://github.com/Orem-on-Clouds/.github/assets/58321856/d5eb5f22-8f6f-42de-80e8-7ebd71c159e9">
+<img width="1270" alt="image" src="https://github.com/Orem-on-Clouds/.github/assets/58321856/28943725-9e89-4ced-acd8-22ee671b21e3">
